@@ -1,0 +1,129 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "description": "Backend for Meli",
+      "version": "1.0.0",
+      "title": "BFF",
+      "termsOfService": "urn:tos",
+      "contact": {},
+      "license": {
+        "name": "Apache 2.0",
+        "url": "http://www.apache.org/licenses/LICENSE-2.0"
+      }
+    },
+    "tags": [
+      {
+        "name": "Server",
+        "description": ""
+      }
+    ],
+    "basePath": "/",
+    "paths": {
+        "/detalles/{id}": {
+            "get": {
+                "tags": [
+                    "Detalles del producto"
+                ],
+                "summary": "Get detalles productos",
+                "operationId": "getDetallesProductos",
+                "produces": [
+                "application/json"
+                ],
+                "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID",
+                    "required": true,
+                    "type": "string",
+                    "schema": {
+                        "type": "string",
+                        "example": "MLA772921213"
+                    }
+                    
+                }
+                ],
+                "responses": {
+                "200": {
+                    "description": "Success",
+                    "schema": {
+                    "type": "array",
+                    "items": {
+                            "$ref": "#/definitions/Detalles"
+                        }
+                    }
+                },
+                "400": {
+                    "description": "Bad Request"
+                },
+                "404": {
+                    "description": "Not Found"
+                }
+                }
+            }
+        },
+        "/productos/{term}": {
+            "get": {
+                "tags": [
+                    "Productos"
+                ],
+                "summary": "Get productos",
+                "operationId": "getDetallesProductos",
+                "produces": [
+                "application/json"
+                ],
+                "parameters": [
+                {
+                    "name": "term",
+                    "in": "path",
+                    "description": "Term",
+                    "required": true,
+                    "type": "string",
+                    "schema": {
+                        "type": "string",
+                        "example": "Apple"
+                    }
+                    
+                }
+                ],
+                "responses": {
+                "200": {
+                    "description": "Success",
+                    "schema": {
+                    "type": "array",
+                    "items": {
+                            "$ref": "#/definitions/Products"
+                        }
+                    }
+                },
+                "400": {
+                    "description": "Bad Request"
+                },
+                "404": {
+                    "description": "Not Found"
+                }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Products": {
+            "type": "array",
+            "properties": {
+              "author": {
+                "type": "string",
+                "example": "Joel Acef"
+              }
+            }
+        },
+        "Detalles": {
+            "type": "array",
+            "properties": {
+              "author": {
+                "type": "string",
+                "example": "Joel Acef"
+              }
+            }
+        }
+    } 
+  }
