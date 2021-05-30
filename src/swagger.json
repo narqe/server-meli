@@ -1,129 +1,262 @@
 {
-    "swagger": "2.0",
-    "info": {
-      "description": "Backend for Meli",
-      "version": "1.0.0",
-      "title": "BFF",
-      "termsOfService": "urn:tos",
-      "contact": {},
-      "license": {
-        "name": "Apache 2.0",
-        "url": "http://www.apache.org/licenses/LICENSE-2.0"
-      }
-    },
-    "tags": [
-      {
-        "name": "Server",
-        "description": ""
-      }
-    ],
-    "basePath": "/",
-    "paths": {
-        "/detalles/{id}": {
-            "get": {
-                "tags": [
-                    "Detalles del producto"
-                ],
-                "summary": "Get detalles productos",
-                "operationId": "getDetallesProductos",
-                "produces": [
-                "application/json"
-                ],
-                "parameters": [
-                {
-                    "name": "id",
-                    "in": "path",
-                    "description": "ID",
-                    "required": true,
-                    "type": "string",
-                    "schema": {
-                        "type": "string",
-                        "example": "MLA772921213"
-                    }
-                    
-                }
-                ],
-                "responses": {
-                "200": {
-                    "description": "Success",
-                    "schema": {
-                    "type": "array",
-                    "items": {
-                            "$ref": "#/definitions/Detalles"
-                        }
-                    }
-                },
-                "400": {
-                    "description": "Bad Request"
-                },
-                "404": {
-                    "description": "Not Found"
-                }
-                }
+  "swagger": "2.0",
+  "info": {
+    "description": "Backend for Meli",
+    "version": "1.0.0",
+    "title": "BFF",
+    "termsOfService": "urn:tos",
+    "contact": {},
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  },
+  "tags": [
+    {
+      "name": "Server",
+      "description": ""
+    }
+  ],
+  "basePath": "/",
+  "paths": {
+    "/detalles/{id}": {
+      "get": {
+        "tags": [
+          "Detalles del producto"
+        ],
+        "summary": "Get detalles productos",
+        "operationId": "getDetallesProductos",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": true,
+            "type": "string",
+            "schema": {
+              "type": "string",
+              "example": "MLA772921213"
             }
-        },
-        "/productos/{term}": {
-            "get": {
-                "tags": [
-                    "Productos"
-                ],
-                "summary": "Get productos",
-                "operationId": "getDetallesProductos",
-                "produces": [
-                "application/json"
-                ],
-                "parameters": [
-                {
-                    "name": "term",
-                    "in": "path",
-                    "description": "Term",
-                    "required": true,
-                    "type": "string",
-                    "schema": {
-                        "type": "string",
-                        "example": "Apple"
-                    }
-                    
-                }
-                ],
-                "responses": {
-                "200": {
-                    "description": "Success",
-                    "schema": {
-                    "type": "array",
-                    "items": {
-                            "$ref": "#/definitions/Products"
-                        }
-                    }
-                },
-                "400": {
-                    "description": "Bad Request"
-                },
-                "404": {
-                    "description": "Not Found"
-                }
-                }
-            }
-        }
-    },
-    "definitions": {
-        "Products": {
-            "type": "array",
-            "properties": {
-              "author": {
-                "type": "string",
-                "example": "Joel Acef"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/Detalles"
               }
             }
-        },
-        "Detalles": {
-            "type": "array",
-            "properties": {
-              "author": {
-                "type": "string",
-                "example": "Joel Acef"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/productos/{term}": {
+      "get": {
+        "tags": [
+          "Productos"
+        ],
+        "summary": "Get productos",
+        "operationId": "getDetallesProductos",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "term",
+            "in": "path",
+            "description": "Term",
+            "required": true,
+            "type": "string",
+            "schema": {
+              "type": "string",
+              "example": "Apple"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/Products"
               }
             }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
         }
-    } 
+      }
+    }
+  },
+  "definitions": {
+    "Products": {
+      "type": "object",
+      "properties": {
+        "author": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "example": "JUAN",
+              "description": "Name"
+            },
+            "lastName": {
+              "type": "string",
+              "example": "PEREZ",
+              "description": "Last Name"
+            }
+          }
+        },
+        "categories": {
+          "type": "array",
+          "description": "Categories"
+        },
+        "items": {
+          "type": "array",
+          "description": "Products",
+          "$ref": "#/definitions/Items"
+        }
+      }
+    },
+    "Detalles": {
+      "type": "object",
+      "properties": {
+        "author": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "example": "JUAN",
+              "description": "Name"
+            },
+            "lastName": {
+              "type": "string",
+              "example": "PEREZ",
+              "description": "Last Name"
+            }
+          }
+        },
+        "items": {
+          "type": "object",
+          "description": "Product Detail",
+          "$ref": "#/definitions/ItemComplete"
+        }
+      }
+    },
+    "Items": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "ID",
+          "example": "ML412318"
+        },
+        "title": {
+          "type": "string",
+          "description": "Title",
+          "example": "PC apple 32GB"
+        },
+        "condition": {
+          "type": "string",
+          "description": "Condition",
+          "example": "new"
+        },
+        "picture": {
+          "type": "string",
+          "description": "url",
+          "example": "Lorem ipsum..."
+        },
+        "free_shipping": {
+          "type": "boolean",
+          "example": true,
+          "description": "Free shipping"
+        },
+        "price": {
+          "type": "object",
+          "description": "Price",
+          "$ref": "#/definitions/Price"
+        }
+      }
+    },
+    "Price": {
+      "type": "object",
+      "properties": {
+        "currency": {
+          "type": "string",
+          "example": "ARS",
+          "description": "Currency"
+        },
+        "amount": {
+          "type": "number",
+          "example": "12000",
+          "description": "Amount"
+        },
+        "decimals": {
+          "type": "number",
+          "example": "2",
+          "description": "Decimals"
+        }
+      }
+    },
+    "ItemComplete": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "ID",
+          "example": "ML412318"
+        },
+        "title": {
+          "type": "string",
+          "description": "Title",
+          "example": "PC apple 32GB"
+        },
+        "condition": {
+          "type": "string",
+          "description": "Condition",
+          "example": "new"
+        },
+        "sold_quantity": {
+          "type": "number",
+          "description": "Sold Quantity",
+          "example": "318"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description",
+          "example": "Lorem ipsum..."
+        },
+        "picture": {
+          "type": "string",
+          "description": "Image url"
+        },
+        "free_shipping": {
+          "type": "boolean",
+          "description": "Free shipping",
+          "example": true
+        },
+        "price": {
+          "type": "object",
+          "description": "Price",
+          "$ref": "#/definitions/Price"
+        }
+      }
+    }
   }
+}
